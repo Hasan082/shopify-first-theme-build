@@ -1,6 +1,5 @@
-# :wave: Shopify Base Theme :wave:
 
-## Pages Discovred
+## Pages 
 
 Status | Pages
 ------------ | -------------
