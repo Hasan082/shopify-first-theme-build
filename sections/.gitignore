@@ -65,3 +65,6 @@ _site
 secrets.json
 .jekyll-metadata
 .ruby-version
+
+src
+src/
