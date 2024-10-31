@@ -33,7 +33,6 @@
                   {{- childlink.title -}}
                 </a>
               {% endfor %}
-              <a href="{{ link.links.contact.url }}">{{ link.links.contact.title }}</a>
             </div>
           </div>
         {% else %}
@@ -47,21 +46,19 @@
       <a href="{{ routes.cart_url }}" class="text-gray-700 hover:text-gray-900">
         {% render 'icon-shopping-bag' %}
       </a>
-      {% comment %} IF CUSTOMOR ACCOUNT NOT ENABLED {% endcomment %}
+      <!-- IF CUSTOMOR ACCOUNT NOT ENABLED -->
       {% if shop.customer_accounts_enabled %}
-      <nav>
-        {% if customer %}
-          <!-- Show My Account link when logged in -->
-          <a href="{{ routes.account_url }}" class="text-gray-700 hover:text-gray-900">My Account</a>
-        {% else %}
-          
+        <nav>
+          {% if customer %}
+            <!-- Show My Account link when logged in -->
+            <a href="{{ routes.account_url }}" class="text-gray-700 hover:text-gray-900">My Account</a>
+          {% else %}
             <!-- Show Login and Register links when not logged in -->
             <a href="{{ routes.account_login_url }}" class="me-2 text-gray-700 hover:text-gray-900">Log In</a>
             <a href="{{ routes.account_register_url }}" class="text-gray-700 hover:text-gray-900">Register</a>
-          
-        {% endif %}
-      </nav>
-    {% endif %}
+          {% endif %}
+        </nav>
+      {% endif %}
     </div>
   </div>
 

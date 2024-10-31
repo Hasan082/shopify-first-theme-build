@@ -1,0 +1,47 @@
+<div class="max-w-md mx-auto text-center py-16">
+  <h1 class="text-3xl">{{ section.settings.title }}</h1>
+  <p class="my-5 text-xl">{{ section.settings.subtext_html }}</p>
+  {% if section.settings.btn_url == blank %}
+    {% assign shop_url = shop.secure_url %}
+  {% else %}
+    {% assign shop_url = section.settings.btn_url %}
+  {% endif %}
+  <a href="{{ shop_url }}" class="px-5 rounded-md py-3 border border-purple-700 bg-purple-900 mt-5 inline-block transition-all duration-300 hover:bg-purple-500 text-white">
+    {{ section.settings.btn_text }}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Template 404",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "404 Heading title",
+      "default": "404 Not Found",
+      "info": "This is 404 Not found page Title"
+    },
+    {
+      "type": "text",
+      "id": "subtext_html",
+      "label": "Description of 404 Page",
+      "default": "Sorry, the page you are looking for does not exist.",
+      "info": "This is 404 Not found page description"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Return Home",
+      "info": "This is 404 Not found page button text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button Link",
+    }
+  ]
+}
+{% endschema %}
