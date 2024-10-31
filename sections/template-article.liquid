@@ -4,7 +4,7 @@
       {% case block.type %}
         {% when 'article_title' %}
           <div class="flex items-center justify-center">
-            <div class="max-w-7xl text-center my-3">
+            <div class="max-w-7xl text-center mb-2">
               <a
                 class="text-base uppercase text-gray-500 hover:text-gray-700 transition-all duration-200"
                 href="{{ blog.url }}"
@@ -19,12 +19,15 @@
           {% if section.settings.enable_published_date %}
             <div class="flex items-center justify-center">
               <div class="max-w-7xl text-center">
-                <time
-                  class="text-sm my-2"
-                  datetime="{{ article.published_at | date: "%Y-%m-%d" }}"
-                >
-                  {{ article.published_at | date: format: 'on_date' }}
-                </time>
+                <span class="caption-with-letter-spacing">
+                  <time
+                    class="text-sm my-2"
+                    datetime="{{ article.published_at | date: "%Y-%m-%d" }}"
+                  >
+                    {{ article.published_at | date: format: 'on_date' }}
+                  </time>
+                </span>
+                
               </div>
             </div>
           {% endif %}
@@ -47,10 +50,13 @@
                     width="100%"
                     height="100%"
                     loading="lazy"
-                    class="my-2 max-h-[200px] sm:max-h-[250px] md:max-h-[320px] lg:max-h-[400px] object-cover object-center rounded-md"
+                    class="w-full my-2 max-h-[200px] sm:max-h-[250px] md:max-h-[320px] lg:max-h-[400px] object-cover object-center rounded-md"
                     src="{{ article.image | image_url }}"
                     alt="{{ article.image.alt | escape }}"
                   >
+                {% else %}
+                  {% assign placeholder_image = "lifestyle-2" %}
+                  {{ placeholder_image | placeholder_svg_tag: "w-full my-2 max-h-[200px] sm:max-h-[250px] md:max-h-[320px] lg:max-h-[400px] object-cover object-center rounded-md"  }}
                 {% endif %}
               </div>
             </div>
@@ -58,8 +64,8 @@
 
         {% when 'article_content' %}
           <div class="flex items-center justify-center">
-            <div class="max-w-7xl text-center">
-              <div class="main-content my-4">
+            <div class="max-w-7xl">
+              <div class="main-content mt-4">
                 {{ article.content }}
               </div>
             </div>
@@ -71,6 +77,8 @@
     {% endfor %}
   </div>
 </article>
+
+
 
 {% schema %}
 {
