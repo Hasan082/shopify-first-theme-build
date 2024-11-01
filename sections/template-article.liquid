@@ -78,7 +78,15 @@
   </div>
 </article>
 
-
+{% if article.comments_enabled? %}
+<div id="comment" class="my-8">
+  {% if article.comments_count > 0 %}
+      <p>Show comment and comment here</p>
+  {% else %}
+    <p>There is no comment yet, Be first to comment here</p>
+  {% endif %}
+</div>
+{% endif %}
 
 {% schema %}
 {
